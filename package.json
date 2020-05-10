@@ -4,6 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "scheduler": "node src/scripts/runScheduler",
     "parse": "node src/scripts/parseAndSave",
     "prettier": "prettier --write --config .prettierrc"
   },

@@ -1,5 +1,6 @@
 require('dotenv').config();
 
+const schedule = require('node-schedule');
 const mongoose = require('mongoose');
 const { sendTodayMealsMessage } = require('../service/menu');
 
@@ -10,8 +11,13 @@ const db = mongoose.connection;
 
 db.once('open', () => {
   console.log('DB connected');
-  sendTodayMealsMessage({}).then(() => {
-    db.close();
+
+  const lunchSchedule = schedule.scheduleJob({ hour: 12, minute: 30, dayOfWeek: [1, 2, 3, 4, 5] }, () => {
+    sendTodayMealsMessage({ timeCategory: 1 });
+  });
+
+  const dinnerSchedule = schedule.scheduleJob({ hour: 18, minute: 30, dayOfWeek: [1, 2, 3, 4, 5] }, () => {
+    sendTodayMealsMessage({ timeCategory: 2 });
   });
 });
 db.on('error', (err) => {
