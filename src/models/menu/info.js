@@ -1,4 +1,4 @@
-const { MENU } = require('../constants');
+const { MENU } = require('../../constants');
 const mongoose = require('mongoose');
 
 const CONSTANTS = {
@@ -12,7 +12,7 @@ const schema = mongoose.Schema({
   description: String,
   meals: [
     {
-      corner: String,
+      corner: Object,
       texts: [String],
     },
   ],
