@@ -8,7 +8,7 @@ const CONSTANTS = {
 const schema = mongoose.Schema({
   month: Number,
   date: Number,
-  timeCategory: String,
+  timeCategory: Number,
   description: String,
   meals: [
     {

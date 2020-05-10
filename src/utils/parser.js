@@ -8,7 +8,7 @@ const {
 exports.toTimeCategory = (text) => {
   switch (text) {
     case '조식':
-      return TIME_CATEGORY.BREAKFASE;
+      return TIME_CATEGORY.BREAKFAST;
     case '중식':
       return TIME_CATEGORY.LUNCH;
     case '석식':
