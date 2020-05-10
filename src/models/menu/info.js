@@ -1,16 +1,13 @@
+const { MENU } = require('../constants');
 const mongoose = require('mongoose');
 
 const CONSTANTS = {
-  TIME_CATEGORY: {
-    BREAKFAST: 0,
-    LUNCH: 1,
-    DINNER: 2,
-  },
+  TIME_CATEGORY: MENU.TIME_CATEGORY,
 };
 
 const schema = mongoose.Schema({
   month: Number,
-  day: Number,
+  date: Number,
   timeCategory: String,
   description: String,
   meals: [

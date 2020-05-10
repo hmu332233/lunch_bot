@@ -4,6 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "parse": "node src/scripts/parseAndSave",
     "prettier": "prettier --write --config .prettierrc"
   },
   "husky": {

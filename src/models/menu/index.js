@@ -4,6 +4,6 @@ exports.createMeals = (meals) => {
   return db.create(meals);
 };
 
-exports.getMeal = ({ month, day, timeCategory = CONSTANTS.TIME_CATEGORY.LUNCH }) => {
-  return db.findOne({ month, day, timeCategory }).lean();
+exports.getMeal = ({ month, date, timeCategory = CONSTANTS.TIME_CATEGORY.LUNCH }) => {
+  return db.findOne({ month, date, timeCategory }).lean();
 };
