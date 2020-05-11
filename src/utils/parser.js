@@ -5,6 +5,17 @@ const {
   MENU: { TIME_CATEGORY },
 } = require('../constants');
 
+exports.toTimeText = (timeCategory) => {
+  switch (timeCategory) {
+    case TIME_CATEGORY.BREAKFAST:
+      return '조식';
+    case TIME_CATEGORY.LUNCH:
+      return '중식';
+    case TIME_CATEGORY.DINNER:
+      return '석식';
+  }
+};
+
 exports.toTimeCategory = (text) => {
   switch (text) {
     case '조식':

@@ -6,7 +6,7 @@ exports.sendMessage = async ({ month, date, timeCategory, description }) => {
   }
 
   const postData = {
-    text: `${month}월 ${date}일 ${timeCategory}\n\n${description}`,
+    text: `*${month}월 ${date}일 ${timeCategory}*\n\n${description}`,
   };
 
   const res = await axios.post(process.env.SLACK_WEB_HOOK, postData, {
