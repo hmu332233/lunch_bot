@@ -3,11 +3,11 @@ const utilSlack = require('../utils/slack');
 const utilParser = require('../utils/parser');
 
 exports.sendMealsMessage = async ({ month, date, timeCategory }) => {
-  const menus = await modMenu.getMeal({ month, date, timeCategory });
-  if (!menus) {
+  const menu = await modMenu.getMeal({ month, date, timeCategory });
+  if (!menu) {
     return false;
   }
-  await utilSlack.sendMessage({ month, date, timeCategory: utilParser.toTimeText(timeCategory), description: menus.description });
+  await utilSlack.sendMessage({ month, date, timeCategory: utilParser.toTimeText(timeCategory), menu });
   return true;
 };
 
