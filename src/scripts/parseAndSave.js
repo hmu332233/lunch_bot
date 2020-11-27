@@ -10,11 +10,12 @@ const db = mongoose.connection;
 
 db.once('open', () => {
   console.log('DB connected');
-  const path = __dirname + '/../../data/menu.pdf';
+  const path = __dirname + '/../../data/menu12-1.pdf';
+  const link = '';
   parse(path)
     .then((meals) => {
       console.log(meals);
-      return modMenu.createMeals(meals);
+      return modMenu.createMeals(meals.map((meal) => ({ ...meal, link })));
     })
     .then(() => {
       db.close();

@@ -16,6 +16,7 @@ const schema = mongoose.Schema({
       texts: [String],
     },
   ],
+  link: String,
 });
 
 const model = mongoose.model('menu', schema);
