@@ -39,13 +39,57 @@ exports.sendMessage = async ({ month, date, timeCategory, menu }) => {
         type: 'section',
         text: {
           type: 'mrkdwn',
-          text: `*${title}*\n<fakeLink.toEmployeeProfile.com|전체 식단 보기 (준비 중)>`,
+          text: `*${title}*\n<${menu.link || ''}|전체 식단 보기>`,
         },
       },
       {
         type: 'divider',
       },
       ...sections,
+    ],
+  };
+
+  const res = await axios.post(process.env.SLACK_WEB_HOOK, postData, {
+    headers: {
+      'Content-Type': 'application/json',
+    },
+  });
+
+  if (res && res.data) {
+    if (res.data === 'ok') {
+      return true;
+    }
+  }
+
+  return false;
+};
+
+exports.sendEmptyMessage = async ({ month, date, timeCategory, menu }) => {
+  if (!process.env.SLACK_WEB_HOOK) {
+    return false;
+  }
+
+  const title = `${month}월 ${date}일 ${timeCategory}`;
+
+  const postData = {
+    blocks: [
+      {
+        type: 'section',
+        text: {
+          type: 'mrkdwn',
+          text: `*${title}*\n<fakeLink.toEmployeeProfile.com|전체 식단 보기 (준비 중)>`,
+        },
+      },
+      {
+        type: 'divider',
+      },
+      {
+        type: 'section',
+        text: {
+          type: 'mrkdwn',
+          text: '등록된 식단이 없습니다.',
+        },
+      },
     ],
   };
 
